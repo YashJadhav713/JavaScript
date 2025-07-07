@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        let student = [{ "rno": 1, "name": "ajay", "marks": 59 },
+                       { "rno": 2, "name": "vijay", "marks": 60 },
+                       { "rno": 3, "name": "amit", "marks": 65 },
+                       { "rno": 4, "name": "rohit", "marks": 70 }
+                    ];
+        
+        function display() {
+            var data = "";
+
+            for (let i = 0; i <student.length; i++) {
+                data = data + "<tr><td style='color:red'>" + student[i].rno + "</td><td>"+student[i].name + "</td><td>" + student[i].marks + "</td></tr>";
+
+            }
+            document.getElementById("tdata").innerHTML = data;
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" style="color: red;" value="sub" onclick="display()">
+    <hr>
+    <table border="3" style="margin: auto;"  cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th style="color: red;">Roll no</th>
+                <th style="color: red;">Name</th>
+                <th style="color: red;">Marks</th>
+            </tr>
+        </thead>
+        <tbody id="tdata"></tbody>
+    </table>
+
+</body>
+
+</html>
