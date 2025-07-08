@@ -7,17 +7,17 @@
     <title>Document</title>
     <script>
         
-        let student = [{ "rno": 1, "name": "ajay", "marks": 59 },
-                       { "rno": 2, "name": "vijay", "marks": 60 },
-                       { "rno": 3, "name": "amit", "marks": 65 },
-                       { "rno": 4, "name": "rohit", "marks": 70 }
+        let employ = [{ "EId": 1, "E_name": "ajay", "Salary": 5900 },
+                       { "Eid": 2, "E_name": "vijay", "Salary": 6000 },
+                       { "Eid": 3, "E_name": "amit", "Salary": 6500 },
+                       { "Eid": 4, "E_name": "rohit", "Salary": 7000 }
                     ];
         
         function display() {
             var data = "";
 
-            for (let i = 0; i <student.length; i++) {
-                data = data + "<tr><td style='color:red'>" + student[i].rno + "</td><td>"+student[i].name + "</td><td>" + student[i].marks + "</td></tr>";
+            for (let i = 0; i <employ.length; i++) {
+                data = data + "<tr><td style='color:red'>" + employ[i].rno + "</td><td>"+employ[i].name + "</td><td>" + student[i].marks + "</td></tr>";
 
             }
             document.getElementById("tdata").innerHTML = data;
@@ -31,9 +31,9 @@
     <table border="3" style="margin: auto;"  cellpadding="10" cellspacing="0">
         <thead>
             <tr>
-                <th style="color: red;">Roll no</th>
-                <th style="color: red;">Name</th>
-                <th style="color: red;">Marks</th>
+                <th style="color: red;">Employ_Id</th>
+                <th style="color: red;">Employ_Name</th>
+                <th style="color: red;">Employ_Salary</th>
             </tr>
         </thead>
         <tbody id="tdata"></tbody>
