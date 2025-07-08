@@ -4,8 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        let student=[];
+        const Addition=()=>{
+            let r=document.getElementById("tname").value;
+            let n=document.getElementById("taname").value;
+            let m=document.getElementById("tabname").value;
+
+            let st={"rno":r,"name":n,"marks":m};
+            student.push(st);
+            alert("Student Added successfuly");
+
+            display();
+        }
+        const display=()=>{
+            var data="";
+            for(let i=0;i<student.length;i++){
+                data=data+"<tr><td>"+student[i].rno+"</td><td>"+student[i].name+"</td><td>"+student[i].marks+"</td></tr>";
+            }
+            document.getElementById("tdata").innerHTML=data;
+        }
+    </script>
 </head>
 <body>
-    
+    <label for="">Roll no</label>
+    <input type="text" id="tname">
+    <label for="">Name</label>
+    <input type="text" id="taname">
+    <label for="">Marks</label>
+    <input type="text" id="tabname">
+
+    <input type="button" value="Sub" onclick="Addition()"><hr>
+    <table border="3" cellpadding="10" style="margin: auto; color: blue;">
+        <thead>
+            <tr>
+                <th>Roll_no</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody id="tdata"></tbody>
+    </table>
 </body>
 </html>
