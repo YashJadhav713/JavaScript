@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #hr{
+            color: blue;
+        }
+        #p{
+            color: green;
+        }
+        #f{
+            color: red;
+        }
+        #T{
+            color: rgb(255, 0, 255);
+        }
+
+        
+    </style>
+    <script>
+        let student = [];
+        const Addition = () => {
+            let i = document.getElementById("tname").value;
+            let n = document.getElementById("taname").value;
+            let e = Number(document.getElementById("tabname").value);
+            let m = Number(document.getElementById("tablname").value);
+            let s = Number(document.getElementById("tablename").value);
+
+            let t = (e + m + s).toFixed(2);
+            let p = (t * 100 / 300).toFixed(2);
+
+
+
+            if (p < 35) {
+                var r = "fail"
+                alert("Student was successfuly failed");
+                // or (var r = "<h2 style='color:red'>fail/pass<h2>");
+
+            } 
+            else if (p >= 35) {
+                var r = "pass"
+                alert("sorry to say but Student was baadly pass");
+            }
+
+            let st = { "s_id": i, "s_name": n, "eng": e, "mar": m, "sci": s, "total": t, "per": p, "res": r };
+
+            student.push(st);
+            alert("Student Added successfuly");
+
+            
+
+            display();
+
+        }
+        const display=()=>{
+
+            var passst= 0;
+            var failst= 0;
+            var totalst= 0;
+
+            var data = "";
+
+            for (let i = 0; i < student.length; i++) {
+
+                if (student[i].res==="fail") {
+                    failst++;
+
+                    data = data +"<tr><td>" 
+                                +student[i].s_id+
+                                "</td><td>" 
+                                + student[i].s_name + 
+                                "</td><td>" 
+                                + student[i].eng + 
+                                "</td><td>" 
+                                + student[i].mar + 
+                                "</td><td>" 
+                                + student[i].sci + 
+                                "</td><td>" 
+                                + student[i].total + 
+                                "</td><td>"
+                                + student[i].per + 
+                                "</td><td style='color:red'>" 
+                                + student[i].res + 
+                                "</td></tr>";
+                }
+
+                else if (student[i].res==="pass") {
+                    passst++;
+
+                    data = data +"<tr><td>" 
+                                +student[i].s_id+
+                                "</td><td>" 
+                                + student[i].s_name + 
+                                "</td><td>" 
+                                + student[i].eng + 
+                                "</td><td>" 
+                                + student[i].mar + 
+                                "</td><td>" 
+                                + student[i].sci + 
+                                "</td><td>" 
+                                + student[i].total + 
+                                "</td><td>"
+                                + student[i].per + 
+                                "</td><td style='color:green'>" 
+                                + student[i].res + 
+                                "</td></tr>";
+
+                }
+
+
+            }
+
+
+            totalst= passst+failst;
+
+            document.getElementById("p").innerHTML="Pass stu = "+passst;
+            document.getElementById("f").innerHTML="Fail stu =  "+failst;
+            document.getElementById("T").innerHTML="Total stu = "+totalst;
+
+            document.getElementById("tdata").innerHTML=data;
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <label for="">S_Id</label>
+    <input type="text" id="tname"><br>
+    <label for="">S_name</label>
+    <input type="text" id="taname"><br>
+    <label for="">English</label>
+    <input type="text" id="tabname"><br>
+    <label for="">Marathi</label>
+    <input type="text" id="tablname"><br>
+    <label for="">Science</label>
+    <input type="text" id="tablename"><br>
+
+
+    <input type="button" value="Sub" onclick="Addition()">
+    
+    <hr>
+
+    <h3 id="p"></h3>
+    <h3 id="f"></h3>
+    <h3 id="T"></h3>
+
+    <hr>
+
+    <table border="3" cellpadding="10" style="margin: auto;">
+        <thead>
+            <tr style="color: blue;">
+                <th>S_Id</th>
+                <th>S_Name</th>
+                <th>English</th>
+                <th>Marathi</th>
+                <th>Science</th>
+                <th>Total</th>
+                <th>Percentage</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody id="tdata"></tbody>
+    </table>
+</body>
+
+</html>
