@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script>
+        let student = [];
+        const addStudent = () => {
+            let Id = document.getElementById("stId").value;
+            let Name = document.getElementById("stName").value;
+            let Colification = document.getElementById("stColification").value;
+            let Percentage = document.getElementById("stPercentage").value;
+
+            let st = { "stIdk": Id, "stNamek": Name, "stColificationk": Colification, "stPercentagek": Percentage };
+
+
+            // console.log(st) //?...for check out put on window..console
+
+
+            student.push(st);
+            alert("Student Added Successfully");
+            display(); //for jump on display function
+            ClearData();//for clear the inserted data
+
+
+        }
+
+        const display = () => {
+            var data = "";
+
+            student.forEach(function (d, i) {
+                data = data + "<tr><td>" + d.stIdk + "</td><td>" + d.stNamek + "</td><td>" + d.stColificationk + "</td><td>" + d.stPercentagek + "</td></tr>";
+            });
+
+            document.getElementById("tbldata").innerHTML = data;
+
+        }
+
+        ClearData = () => {
+            document.getElementById("stId").value = "";
+            document.getElementById("stName").value = "";
+            document.getElementById("stColification").value = "";
+            document.getElementById("stPercentage").value = "";
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Login_Form</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="">Studen_Id</label>
+                            <input type="text" class="form-control" id="stId" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" id="stName" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Colification</label>
+                            <input type="text" class="form-control" id="stColification" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Percentage</label>
+                            <input type="text" class="form-control" id="stPercentage" />
+                        </div>
+                        <div class="card-footer">
+                            <input type="button" value="Submite" class="btn btn-primary" onclick="addStudent()">
+                            <input type="button" value="Close" class="btn btn-danger" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <table class="table table-border">
+                    <thead>
+                        <tr>
+                            <th>Student_Id</th>
+                            <th>Student_Name</th>
+                            <th>Student_Colification</th>
+                            <th>Student_Percentage</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tbldata"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
