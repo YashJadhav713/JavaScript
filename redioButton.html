@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function selactgender(s){
+            console.log(s.value);
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <input type="radio" name="rdMale" id="rdMale" value="male" onchange="selactgender(this)"><span>male</span>
+            </td>
+            <td>
+                <input type="radio" name="rdFemale" id="rdFemale" value="female" onchange="selactgender(this)"><span>female</span>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

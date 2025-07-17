@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function sumk(){
+
+            var sar = document.getElementById("sate").value;
+            var end = document.getElementById("eat").value;
+
+            var st = new Date(sar);
+            var ed = new Date(end);
+            var dayf = ed-st;
+
+            // console.log(day);
+            document.getElementById("msg").innerHTML = dayf;
+        }
+    </script>
+</head>
+<body>
+    <label>Start Date</label>
+    <input type="date" id="sate"/>
+    <br/>
+
+    <label>Last Date</label>
+
+    <input type="date" id="eat"/><hr/>
+
+    <input type="button" value="Submite" onclick="sumk()"/>
+    <hr>
+
+
+    <h2 id="msg"></h2>
+</body>
+</html>
