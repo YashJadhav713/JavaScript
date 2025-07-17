@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let states = [
+        { "stateId": 1, "stateName": "maharastra" },
+        { "stateId": 2, "stateName": "Gujrat" },
+        { "stateId": 3, "stateName": "UP" },
+        { "stateId": 4, "stateName": "Panjab" },
+        { "stateId": 5, "stateName": "Rajasthan" }
+        ];
+
+        let cities = [
+        { "stateId": 1, "citysId": 1, "citysName": "nashik" },
+        { "stateId": 1, "citysId": 20, "citysName": "pune" },
+
+        { "stateId": 2, "citysId": 3, "citysName": "Ahamdabad" },
+        { "stateId": 2, "citysId": 40, "citysName": "surat" },
+
+        { "stateId": 3, "citysId": 5, "citysName": "aayodhya" },
+        { "stateId": 3, "citysId": 60, "citysName": "luknow" },
+        
+        { "stateId": 4, "citysId": 70, "citysName": "amritsar" },
+        { "stateId": 4, "citysId": 80, "citysName": "ludhiyana" },
+        { "stateId": 4, "citysId": 90, "citysName": "patiyala" },
+
+        { "stateId": 5, "citysId": 10, "citysName": "Jaipur" },
+        { "stateId": 5, "citysId": 11, "citysName": "Udaipur" },
+        ];
+
+
+        let LocationA = [
+        { "citysId": 1, "locationId": 1, "location": "nandgaon" },
+        { "citysId": 1, "locationId": 2, "location": "manmad" },
+        { "citysId": 1, "locationId": 3, "location": "malegaon" },
+
+        { "citysId": 20, "locationId": 4, "location": "bhosri" },
+        { "citysId": 20, "locationId": 50, "location": "hadapsar" },
+        { "citysId": 20, "locationId": 60, "location": "swarget" },
+
+        { "citysId": 3, "locationId": 7, "location": "Ambawadi" },
+        { "citysId": 3, "locationId": 80, "location": "EllisBridge" },
+        { "citysId": 3, "locationId": 90, "location": "Paldi" },
+
+        { "citysId": 40, "locationId": 10, "location": "Palanpur" },
+        { "citysId": 40, "locationId": 11, "location": "Piplod" },
+        { "citysId": 40, "locationId": 12, "location": "Vesu" },
+
+        { "citysId": 5, "locationId": 13, "location": "Kami Ganj" },
+        { "citysId": 5, "locationId": 14, "location": "JiyanPur" },
+        { "citysId": 5, "locationId": 15, "location": "RamGhat" },
+
+        { "citysId": 60, "locationId": 16, "location": "Aminabad" },
+        { "citysId": 60, "locationId": 17, "location": "Charbagh" },
+        { "citysId": 60, "locationId": 18, "location": "VidhanSabha" },
+
+        { "citysId": 70, "locationId": 19, "location": "KotKhalsa" },
+        { "citysId": 70, "locationId": 20, "location": "WalaBazar" },
+        { "citysId": 70, "locationId": 21, "location": "Ranjit Avenue" },
+
+        { "citysId": 80, "locationId": 22, "location": "Jagraon" },
+        { "citysId": 80, "locationId": 23, "location": "Dehlon" },
+        { "citysId": 80, "locationId": 24, "location": "Samrala" },
+
+        { "citysId": 90, "locationId": 25, "location": "Sular" },
+        { "citysId": 90, "locationId": 26, "location": "Chaura" },
+        { "citysId": 90, "locationId": 27, "location": "Samana" },
+
+        { "citysId": 10, "locationId": 28, "location": "Hawa Mahal" },
+        { "citysId": 10, "locationId": 29, "location": "Jal Mahal" },
+        { "citysId": 10, "locationId": 30, "location": "World Trade Park" },
+
+        { "citysId": 11, "locationId": 31, "location": "Shastri Circle" },
+        { "citysId": 11, "locationId": 32, "location": "Udaipole" },
+        { "citysId": 11, "locationId": 33, "location": "Shobhagpura" },
+
+        ];
+
+        function fillState() {
+
+            let data = "<option>select_state</option>";
+
+            states.forEach(function (d, i) {
+
+                data = data + "<option value=" + d.stateId + ">" + d.stateName + "</option>";
+            });
+
+            document.getElementById("ddstate").innerHTML = data;
+        };
+
+        const displayCity = () => {
+
+            let sId = document.getElementById("ddstate").value;
+            let data = "<option>select City</option>";
+            cities.forEach(function (d, i) {
+
+                if (sId == d.stateId) {
+
+                    data = data + "<option value=" + d.stateId + ">" + d.citysName + "</option>";
+
+                }
+            });
+            document.getElementById("ddCity").innerHTML = data;
+        };
+
+        const displayLocation = () => {
+
+            let nId = document.getElementById("ddCity").value;
+            let data = "<option>select Location</option>";
+            LocationA.forEach(function (d, i) {
+
+                if (nId == d.citysId) {
+
+
+                    data = data + "<tr><td>" + d.locationId + "</td><td>" + d.location + "</td></tr>";
+                };
+
+            });
+            document.getElementById("ddLocation").innerHTML = data;
+            document.getElementById("dtLocation").innerHTML = data;
+        };
+
+    </script>
+</head>
+
+<body onload="fillState()">
+
+    <label>States</label>
+
+
+    <select id="ddstate" onchange="displayCity()">
+
+    </select>
+
+    <label>city</label>
+
+    <select id="ddCity" onchange="displayLocation()">
+
+    </select>
+
+    <label>Location</label>
+
+    <select id="ddLocation">
+
+    </select>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>location_Id</th>
+                <th>location</th>
+            </tr>
+        </thead>
+        <tbody id="dtLocation"></tbody>
+
+</body>
+
+</html>
