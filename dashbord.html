@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 300px;
+            width: 300px;
+            background-color: rgb(180, 203, 65);
+            box-shadow: 0 0 30px 10px grey;
+            animation: moveBox 10s infinite linear;
+            position: relative;
+        }
+
+        @keyframes moveBox{
+            0% {left : 0px}
+            50% {left : 250px}
+            100% {left : 500px}
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div><br>
+    <button onclick="pauseA()">Pause Animation</button>
+    <button onclick="playB()">Play Animation</button>
+<script>
+
+
+    let animateABox;
+
+    function pauseA(){
+        const animation = document.getAnimations();
+
+        animateABox = animation[0]; //start from 0th position
+
+        if(animateABox) animateABox.pause();
+
+    }
+    function playB(){
+        if(animateABox) animateABox.play();
+
+    }
+</script>
+</body>
+</html>
