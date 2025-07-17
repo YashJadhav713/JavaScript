@@ -81,6 +81,18 @@
 
         }
 
+        function ViewStudent() {
+            let s = document.getElementById("stId").value;
+            s= s-1;
+            let m = student[s];
+            document.getElementById("stId").value = m.stIdk;
+            document.getElementById("stName").value = m.stNamek;
+            document.getElementById("stColification").value = m.stColificationk;
+            document.getElementById("stPercentage").value = m.stPercentagek;
+
+
+        }
+
         const updateStudent = () => {
             let Id = document.getElementById("stId").value;
             let Name = document.getElementById("stName").value;
@@ -146,6 +158,7 @@
                             <input type="button" value="Submite" class="btn btn-primary" onclick="addStudent()">
                             <input type="button" value="Close" class="btn btn-danger" />
                             <input type="button" value="update" class="btn btn-warning" onclick="updateStudent()" />
+                            <input type="button" value="view" class="btn btn-success" onclick="ViewStudent()" />
                         </div>
                     </div>
                 </div>
