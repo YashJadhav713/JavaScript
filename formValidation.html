@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validation(){
+            let status = true;
+            let eid = document.forms["empform"]["id"].value;
+            let ename = document.forms["empform"]["name"].value;
+            let idpattern = /^[0-9]+$/;
+            let namepattern = /^[a-z A-Z]+$/;
+
+            if(eid==""){
+                document.getElementById("spid").innerHTML="Plz Enter a Emp Id";
+                status=false;
+                //alert("Please Enter a Employ Id");
+
+            }else if(!eid.match(idpattern)){
+                status=false;
+                document.getElementById("spid").innerHTML="Only Numbers are Allowed";
+
+            }else{
+                document.getElementById("spid").innerHTML="";
+            }
+
+
+            if(ename==""){
+                document.getElementById("spname").innerHTML="Plz Enter a Emp Name";
+                status=false;
+                //alert("Please Enter a Employ Id");
+
+            }else if(!ename.match(namepattern)){
+                status=false;
+                document.getElementById("spname").innerHTML="Only Characters are Allowed";
+
+            }else{
+                document.getElementById("spname").innerHTML="";
+            }
+            return status;
+        }
+        
+    </script>
+</head>
+<body>
+    <form action="dashbord.html" name="empform" method="get" onsubmit="return validation()">
+        <table>
+            <tr>
+            <td>Employ_id</td>
+            <td><input type="text" name="id"></td>
+            <td><span id="spid" style="color: red;"></span></td>
+        </tr>
+            <tr>
+            <td>Employ_Name</td>
+            <td><input type="text" name="name"></td>
+            <td><span id="spname" style="color: red;"></span></td>
+        </tr>
+        <tr>
+        <td><input type="submit" value="Submite"></td></tr>
+        </table>
+
+    </form>
+    
+</body>
+</html>
