@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function display(){
+            let dt = new Date();
+            document.getElementById("dt").innerHTML= dt;
+            document.getElementById("msg1").innerHTML= dt.toDateString();
+            document.getElementById("msg2").innerHTML= dt.toLocaleDateString();
+            document.getElementById("msg3").innerHTML= dt.toLocaleString();
+            document.getElementById("msg4").innerHTML= dt.toLocaleTimeString();
+            document.getElementById("msg5").innerHTML= "Year = "+dt.getFullYear()+", Month = "+dt.getMonth()+", Day = "+dt.getDay()+", Date = "+dt.getDate()+", Hours = "+dt.getHours()+", Minites = "+dt.getMinutes()+", Seconds = "+dt.getSeconds()+", Milliseconds = "+dt.getMilliseconds();
+        }
+    </script>
+</head>
+<body onload="display()">
+    <!-- GMT = GRIDEWITCH MEDIUM TIME
+    IST = INDIAN  TIME -->
+    <h1 id="dt" style="color: red;"></h1>
+    <h2 id="msg1"></h2>
+    <h2 id="msg2"></h2>
+    <h2 id="msg3"></h2>
+    <h2 id="msg4"></h2>
+    <h2 id="msg5"></h2>
+</body>
+</html>
