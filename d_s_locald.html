@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function sub(){
+            let uname = document.getElementById("uname").value;
+            let pass = document.getElementById("pass").value;
+
+            if(uname == yash && pass == 123){
+                localStorage.setItem("user_name",uname);
+                localStorage.setItem("password",pass);
+
+                window.location.href="d_s_l_dash.html";
+            }else{
+                document.getElementById("msg").innerHTML="Login Failed";
+                document.getElementById("msg").style.color="red";
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <label for="">user_name</label>
+    <inpuÜt type="text" id="uname"><br>
+    <label for="">user_name</label>
+    <input type="text" id="pass"><hr>
+    <input type="button" value="submit" onclick="sub()">
+</body>
+</html>
