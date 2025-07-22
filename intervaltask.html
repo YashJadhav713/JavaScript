@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function start(){
+            let c = 10;
+
+            document.getElementById("msg").innerHTML="00:"+c;
+            setInterval(function (){
+                if(c == 0){
+                    alert("Time Out");
+                    window.location.href = "intervalt_dash.html";
+                };
+                c--;
+                document.getElementById("msg").innerHTML="00:"+c;
+
+            },1000);
+        }
+    </script>
+</head>
+<body>
+    <label for="">start Exam</label>
+    <input type="button" value="start" onclick="start()">
+    <h1 id="msg"></h1>
+</body>
+</html>
