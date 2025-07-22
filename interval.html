@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- this code is in my point of view -->
+    <script>
+        function display(){
+            let sec = 0;
+            let min =0;
+            let hours=0;
+            document.getElementById("msg2").innerHTML=sec;
+            document.getElementById("msg1").innerHTML=min;
+            document.getElementById("msg").innerHTML=hours;
+
+            setInterval(function(){
+
+                sec++;
+                document.getElementById("msg2").innerHTML="Sec = "+sec;
+          
+            },1000);
+
+            setInterval(function(){
+
+                min++;
+
+                document.getElementById("msg1").innerHTML="minites = "+min;
+            },60000);
+
+            setInterval(function(){
+
+                hours++;
+                document.getElementById("msg").innerHTML="Hours = "+hours;
+
+            },3600000);
+
+        }
+
+    </script>
+</head>
+<body onload="display()">
+
+    <h1 id="msg">Hours</h1>
+    <h1 id="msg1">Minites</h1>
+    <h1 id="msg2">Secends</h1>
+
+</body>
+</html>
