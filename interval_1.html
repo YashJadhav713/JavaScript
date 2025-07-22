@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function display(){
+            let dt = new Date();
+            document.getElementById("msg").innerHTML=dt.ToLocaleTimeString();
+            setInterval (function(){
+                let dt = new Date();
+                document.getElementById("msg1").innerHTML=dt.toLocaleTimeString();
+            },1000)
+        }
+    </script>
+</head>
+<body onload="display()">
+    <h1 id="msg"></h1>
+    <h1 id="msg1"></h1>
+    
+</body>
+</html>
