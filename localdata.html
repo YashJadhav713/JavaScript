@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function setdata(){
+            localStorage.setItem("user-name","CIIT Training Institute");
+            alert("data stored");
+        };
+
+        function getdata(){
+            let uname = localStorage.getItem("user-name");
+            document.getElementById("msg").innerHTML=uname;
+        };
+
+        function remdata(){
+            localStorage.removeItem("user-name");
+            getdata()
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Set data" onclick="setdata()">
+    <input type="button" value="Get data" onclick="getdata()">
+    <input type="button" value="Remove data" onclick="remdata()">
+    <hr>
+    <h1 id="msg"></h1>
+</body>
+</html>
