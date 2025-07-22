@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Student CRUD</title>
+    <script>
+            const url="https://dummyapis.ciitstudent.com/api/student";
+
+        const displayData =async()=>{
+
+            let response = await fetch(url);
+            
+            let student = await response.json();
+
+            console.log(student);
+            let data="";
+
+            student.forEach(function(d,i){
+
+               data=data+"<tr><td>"+d.studentId+"</td><td>"+d.studentName+"</td><td>"+d.english+"</td><td>"+d.maths+"</td><td>"+d.science+"</td><td><input style='color:blue' type='button' value='View' onclick='viewStudent("+d.studentId+")'/>&nbsp;<input style='color:red' type='button' value='Delete' onclick='deleteStudent("+d.studentId+")'/></td></tr>";
+            });
+
+            document.getElementById("tbldata").innerHTML = data;
+        };
+
+        displayData();
+
+        // Add Student
+        const addStudent = async () => {
+            let st = {
+                "studentId": document.getElementById("sId").value,
+                "studentName": document.getElementById("sName").value,
+                "english": document.getElementById("eng").value,
+                "math": document.getElementById("math").value,
+                "science": document.getElementById("sci").value
+            };
+
+            const responsed = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(st),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await responsed.text();
+            alert(data);
+            displayData();
+            clearDisplay();
+        };
+
+        // View Student by ID
+        const viewStudent = async (id) => {
+            const response = await fetch(`${url}/${id}`);
+            const st = await response.json();
+
+            document.getElementById("sId").value = st.studentId;
+            document.getElementById("sName").value = st.studentName;
+            document.getElementById("eng").value = st.english;
+            document.getElementById("math").value = st.maths;
+            document.getElementById("sci").value = st.science;
+        };
+
+        // Update Student
+        const updateStudent = async () => {
+            let st = {
+                "studentId": document.getElementById("sId").value,
+                "studentName": document.getElementById("sName").value,
+                "english": document.getElementById("eng").value,
+                "math": document.getElementById("math").value,
+                "science": document.getElementById("sci").value
+            };
+
+            const responsed = await fetch(url, {
+                method: 'PUT', // Use PUT for update
+                body: JSON.stringify(st),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await responsed.text();
+            alert(data);
+            displayData();
+            clearDisplay();
+        };
+
+        // Delete Student by ID
+        const deleteStudent=async(id)=>{
+        const responsed =await fetch("https://dummyapis.ciitstudent.com/api/student/"+id,{
+            method : 'PUT', 
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        });
+            const data = await responsed.text();
+            alert(data);
+            displayData();
+            clearDisplay();
+        };
+
+        // Clear Input Fields
+        const clearDisplay = () => {
+            document.getElementById("sId").value = "";
+            document.getElementById("sName").value = "";
+            document.getElementById("eng").value = "";
+            document.getElementById("math").value = "";
+            document.getElementById("sci").value = "";
+        };
+    </script>
+</head>
+<body class="p-3">
+    <h2 class="mb-3">Student Management</h2>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Student ID</td>
+                <td><input type="text" id="sId" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="sName" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>English</td>
+                <td><input type="text" id="eng" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Math</td>
+                <td><input type="text" id="math" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Science</td>
+                <td><input type="text" id="sci" class="form-control"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-success" onclick="addStudent()">Submit</button>
+                    <button class="btn btn-warning" onclick="updateStudent()">Update</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Student Records</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>English</th>
+                <th>Math</th>
+                <th>Science</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tbldata"></tbody>
+    </table>
+</body>
+</html>
